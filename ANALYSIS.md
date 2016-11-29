@@ -1,4 +1,4 @@
-# Star Wars Destiny Set Analyssi by Tag
+# Star Wars Destiny Set Analysis by Tag Set
 
 ## Analysis: Overall
 
