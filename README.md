@@ -11,7 +11,7 @@ The data comes from [swdestinydb.com's source](https://github.com/fafranco82/swd
 
 The rules text of cards is scanned for certain terms that are used to automatically tag cards. This includes ability keywords, like "Guardian", but not things like "discard" because it's not clear (with simple string searching) if you are discarding a card to pay a cost or your opponent is discarding a card.
 
-Not everything can be automatically tagged in this way because it can be unclear. So, we also have many manual tags per specific cards. Judgement calls have to be made. In general, this was done pretty liniently. If a card can in any way remove an opponent's die, then it's tagged with `remove-die`, for example.
+Not everything can be automatically tagged in this way because it can be unclear. So, we also have many manual tags per specific cards. Judgement calls have to be made. In general, this was done pretty leniently. If a card can in any way remove an opponent's die, then it's tagged with `remove-die`, for example.
 
 The die faces of cards (if applicable) are automatically converted to the appropriate tags.
 
