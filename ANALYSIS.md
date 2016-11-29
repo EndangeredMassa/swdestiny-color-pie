@@ -4,7 +4,7 @@
 
 Tag Set: Rules Text, Die Faces, Card Types
 
-Results: [./results/all.md](Overall)
+Results: [Overall](./results/all.md)
 
 ```
 Red:
@@ -61,7 +61,7 @@ Neutral:
 
 Tag Set: Rules Text
 
-Results: [./results/rules.md](Rules Text)
+Results: [Rules Text](./results/rules.md)
 
 ```
 TBD
@@ -73,7 +73,7 @@ TBD
 
 Tag Set: Die Faces
 
-Results: [./results/dice.md](Die Faces)
+Results: [Die Faces](./results/dice.md)
 
 ```
 TBD
@@ -85,7 +85,7 @@ TBD
 
 Tag Set: Card Types
 
-Results: [./results/types.md](Types)
+Results: [Types](./results/types.md)
 
 ```
 TBD
