@@ -227,19 +227,9 @@ function tagTypes(card) {
   return [];
 }
 
-const taggedCards = cards.filter(noBattlefields).map((originalCard) => {
-  const card = _.clone(originalCard);
-  card.abilityTags = tagAbilities(card);;
-  card.diceTags = tagDice(card);
-  card.typeTags = tagTypes(card);
-  card.tags = _.uniq(card.abilityTags.concat(card.diceTags).concat(card.typeTags));
-  return card;
-});
-
-
-function topTags(cards) {
+function topTags(cards, tagType) {
   const countedBy = _.countBy(_.flatten(_.map(cards, (card) => {
-    return card.tags;
+    return card[tagType];
   })));
 
   const countedTags = [];
@@ -252,26 +242,40 @@ function topTags(cards) {
   return _.filter(sortedTags, tag => tag.count > 2);
 }
 
-const data = _.map(taggedCards, card => _.pick(card, 'affiliation_code', 'faction_code', 'tags'));
+function printTags(tags) {
+  const output = tags.map(tag => `  (${tag.count}) ${tag.label}`).join('\n');
+  // fix spacing; not sure why there's an extra space somewhere
+  return ' ' + output.trim();
+}
 
-const redCards = _.filter(data, card => card.faction_code === 'red');
-const yellowCards = _.filter(data, card => card.faction_code === 'yellow');
-const blueCards = _.filter(data, card => card.faction_code === 'blue');
-const generalCards = _.filter(data, card => card.faction_code === 'gray');
+function reportCardType(cards, tagType, key, value, label) {
+  const cardSet = cards.filter(card => card[key] === value);
+  console.log(`${label}: \n`, printTags(topTags(cardSet, tagType)));
+}
 
-const villainCards = _.filter(data, card => card.affiliation_code === 'villain');
-const heroCards = _.filter(data, card => card.affiliation_code === 'hero');
-const neutralCards = _.filter(data, card => card.affiliation_code === 'neutral');
+function report(cardSet, tagType) {
+  console.log(`# Color Pie by ${tagType}`);
+  console.log('------------------------');
+  reportCardType(cardSet, tagType, 'faction_code', 'red', 'Red');
+  reportCardType(cardSet, tagType, 'faction_code', 'blue', 'Blue');
+  reportCardType(cardSet, tagType, 'faction_code', 'yellow', 'Yellow');
+  reportCardType(cardSet, tagType, 'faction_code', 'gray', 'General');
+  console.log('------------------------');
+  reportCardType(cardSet, tagType, 'affiliation_code', 'hero', 'Hero');
+  reportCardType(cardSet, tagType, 'affiliation_code', 'villain', 'Villain');
+  reportCardType(cardSet, tagType, 'affiliation_code', 'neutral', 'Neutral');
+}
 
-console.log('# Abilities, Dice, and Card Types Care About');
-console.log('----------------------');
-console.log('Yellow: \n', topTags(yellowCards));
-console.log('Red: \n', topTags(redCards));
-console.log('Blue: \n', topTags(blueCards));
-console.log('General: \n', topTags(generalCards));
-console.log('----------------------');
-console.log('Hero: \n', topTags(heroCards));
-console.log('Villain: \n', topTags(villainCards));
-console.log('Neutral: \n', topTags(neutralCards));
+const taggedCards = cards.filter(noBattlefields).map((originalCard) => {
+  const card = _.clone(originalCard);
+  card.abilityTags = tagAbilities(card);;
+  card.diceTags = tagDice(card);
+  card.typeTags = tagTypes(card);
+  card.allTags = _.uniq(card.abilityTags.concat(card.diceTags).concat(card.typeTags));
+  return card;
+});
 
-
+report(taggedCards, 'allTags');
+//report(taggedCards, 'diceTags');
+// report(taggedCards, 'abilityTags');
+// report(taggedCards, 'typeTags');

@@ -26,7 +26,6 @@ The results are different sets of cards that can be broken down into tag counts 
 The larger insights are listed below.
 
 ```
-
 Red:
 
 - LOW: upgrades
