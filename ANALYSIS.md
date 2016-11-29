@@ -1,3 +1,4 @@
+# Star Wars Destiny Set Analyssi by Tag
 
 Card breakdown of what abilities and die faces care about by their color and affiliation!
 
@@ -61,7 +62,11 @@ General:
   { count: 5, label: 'focus' },
   { count: 3, label: 'support' },
   { count: 3, label: 'resolve' } ]
+```
+
 ----------------------
+
+```
 Hero:
  [ { count: 27, label: 'resource' },
   { count: 18, label: 'shield' },
@@ -118,57 +123,3 @@ Neutral:
   { count: 3, label: 'reroll' },
   { count: 3, label: 'ambush' } ]
 ```
-
-From this, we can see several interesting things:
-
-```
-Red:
-
-- LOW: upgrades
-- LOW: remove dice
-- HIGH: ranged damage
-- HIGH: guardian
-- HIGH: battlefield
-- HIGH: draw cards
-
-Blue:
-
-- HIGH: requiring blue cards
-- HIGH: shields
-- HIGH: melee damage
-- HIGH: unblockable
-- HIGH: hand size
-
-Yellow:
-
-- HIGH: remove dice
-- HIGH: ambush
-
-General:
-
-- HIGH: battlefield
-
-
-Hero:
-
-- HIGH: shields
-- HIGH: ambush
-- HIGH: regrow cards from discard
-
-Villain:
-
-- HIGH: guardian
-- HIGH: unblockable
-- HIGH: hand size
-- HIGH: remove shield
-- HIGH: remove resource
-
-Neutral:
-
-- HIGH: upgrade
-- HIGH: requiring colored cards
-- HIGH: resource
-- HIGH: battlefield
-```
-
-
